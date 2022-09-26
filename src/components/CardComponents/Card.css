@@ -1,0 +1,9 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    min-width: 400px;
+    height: 60vh;
+
+    background-color: blue;
+}
