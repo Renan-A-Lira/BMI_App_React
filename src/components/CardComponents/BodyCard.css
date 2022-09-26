@@ -1,7 +1,7 @@
 .BodyCard {
     display: grid;
     flex: 1;
-    background-color: brown;
+    background-color: rgb(75, 13, 13);
 
     padding: 1.4rem;
 }
