@@ -3,11 +3,9 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 
 import Button from './components/Button'
-import Card from './components/CardComponents/Card'
-import HeaderCard from './components/CardComponents/HeaderCard'
-import BodyCard from './components/CardComponents/BodyCard'
-import FooterCard from './components/CardComponents/FooterCard'
 import Input from './components/Input'
+
+import { Card, HeaderCard, BodyCard, FooterCard } from './components/CardComponents'
 
 function App() {
   

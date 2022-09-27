@@ -12,7 +12,10 @@ const Input = (props: InputProps) => {
     return (
         <div className="InputLabel">
             <label htmlFor={props.name}>{props.name}</label>
-            <input type={props.type} id={props.type} step={props.step || 0} onChange={(i) => props.callBack(i.target.value)} />
+            <input type={props.type} 
+                id={props.name} 
+                step={props.step || 0} 
+                onChange={(e) => props.callBack(e.target.value)} />
         </div>
     )
 }
