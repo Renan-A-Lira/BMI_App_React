@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
@@ -7,18 +7,28 @@ import Input from './components/Input'
 
 import { Card, HeaderCard, BodyCard, FooterCard } from './components/CardComponents'
 
+import { Form } from '@unform/web'
+import { FormHandles } from '@unform/core'
+
+interface FormResultObject {
+  name: string,
+  weight: string,
+  height: string
+}
+
 function App() {
   
   
   const [result, setResult] = useState(0)
+
+  const formRef = useRef<FormHandles>(null)
   
-  const [name, setName] = useState('')
-  const [weight, setWeight] = useState(0)
-  const [height, setHeight] = useState(0)
-  
-  const calcResult = () => {
-    let calc = +Number(weight / (height * height)).toFixed(2)
+  const calcResult = (data: FormResultObject) => {
     
+    const {weight, height} = data
+
+    let calc = +(+weight / (+height * +height)).toFixed(2)
+
     setResult(calc)
   }
 
@@ -27,13 +37,13 @@ function App() {
       <Card>
         <HeaderCard title='BMI App'/>
         <BodyCard>
-          <form action="">
-            <Input name='Name' type='text' callBack={setName}/>
-            <Input name='Weight' type='number' step={0.1} callBack={setWeight} />
-            <Input name='Height' type='number' step={0.1} callBack={setHeight} />
+          <Form ref={formRef} onSubmit={calcResult}>
+            <Input name='name' type='text' />
+            <Input name='weight' type='number' step={0.01}/>
+            <Input name='height' type='number' step={0.01}/>
 
-            <Button text='Calculate' callBack={calcResult}/>
-          </form>
+            <button type="submit">Save</button>
+          </Form>
           <section className='result'>
             <h4>BMI: {result}</h4>
           </section>
